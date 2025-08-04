@@ -1,0 +1,28 @@
+nav {
+  background: #282c34;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+nav img {
+  height: 40px;
+  margin-right: 20px;
+}
+
+nav a {
+  color: #61dafb;
+  text-decoration: none;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+nav span {
+  margin-left: auto;
+  font-size: 1.5rem;
+}
