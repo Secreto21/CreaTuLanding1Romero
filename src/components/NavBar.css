@@ -1,28 +1,124 @@
-nav {
+.navbar {
   background: #282c34;
-  padding: 10px 20px;
+  padding: 15px 30px;
   display: flex;
   align-items: center;
-  gap: 20px;
+  justify-content: space-between;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
-nav img {
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.navbar-logo {
   height: 40px;
-  margin-right: 20px;
+  width: 40px;
 }
 
-nav a {
+.brand-name {
   color: #61dafb;
   text-decoration: none;
   font-weight: bold;
-  margin-right: 10px;
+  font-size: 1.2rem;
 }
 
-nav a:hover {
-  text-decoration: underline;
+.brand-name:hover {
+  color: #21a6c7;
+  text-decoration: none;
 }
 
-nav span {
-  margin-left: auto;
-  font-size: 1.5rem;
+.navbar-links {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+.nav-link {
+  color: #61dafb;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 8px 12px;
+  border-radius: 4px;
+  transition: all 0.2s;
+}
+
+.nav-link:hover {
+  color: white;
+  background-color: rgba(97, 218, 251, 0.1);
+  text-decoration: none;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-toggle {
+  cursor: pointer;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: white;
+  min-width: 180px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+  z-index: 1000;
+  border-radius: 4px;
+  top: 100%;
+  left: 0;
+  margin-top: 5px;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown-link {
+  color: #333;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  transition: background-color 0.2s;
+}
+
+.dropdown-link:hover {
+  background-color: #f1f1f1;
+  color: #333;
+  text-decoration: none;
+}
+
+.dropdown-link:first-child {
+  border-radius: 4px 4px 0 0;
+}
+
+.dropdown-link:last-child {
+  border-radius: 0 0 4px 4px;
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    padding: 10px 15px;
+    flex-wrap: wrap;
+  }
+  
+  .navbar-links {
+    gap: 15px;
+  }
+  
+  .nav-link {
+    padding: 6px 8px;
+    font-size: 0.9rem;
+  }
+  
+  .brand-name {
+    font-size: 1rem;
+  }
+  
+  .dropdown-content {
+    min-width: 150px;
+  }
 }
