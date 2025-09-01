@@ -19,7 +19,6 @@ const ItemDetail = ({ producto }) => {
 
   const onAdd = () => {
     console.log(`Agregando ${cantidad} unidad(es) del producto: ${producto.nombre}`);
-    // Aquí se implementará la lógica del carrito en futuras entregas
     alert(`Se agregaron ${cantidad} unidad(es) de ${producto.nombre} al carrito`);
   };
 
