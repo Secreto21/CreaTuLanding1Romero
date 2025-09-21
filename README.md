@@ -1,8 +1,48 @@
-# Getting Started with Create React App
+# E-commerce React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Este proyecto es una aplicación web de e-commerce desarrollada con React. Permite a los usuarios navegar por un catálogo de productos, filtrar por categorías, agregar items al carrito y realizar compras.
 
-## Available Scripts
+## Características
+
+- Catálogo de productos con filtrado por categorías
+- Vista detallada de productos
+- Carrito de compras
+- Sistema de checkout
+- Integración con Firebase/Firestore
+- Diseño responsive
+
+## Tecnologías Utilizadas
+
+- React
+- React Router DOM
+- Firebase/Firestore
+- CSS
+
+## Estructura del Proyecto
+
+```
+src/
+  ├── components/
+  │   ├── Cart/
+  │   ├── ItemList/
+  │   ├── ItemDetail/
+  │   ├── Checkout/
+  │   └── NavBar/
+  ├── context/
+  │   └── CartContext.js
+  ├── firebase/
+  │   └── config.js
+  └── App.js
+```
+
+## Instalación y Configuración
+
+1. Clona el repositorio
+2. Instala las dependencias con `npm install`
+3. Configura las variables de entorno de Firebase en el archivo `.env`
+4. Inicia la aplicación con `npm start`
+
+## Scripts Disponibles
 
 In the project directory, you can run:
 

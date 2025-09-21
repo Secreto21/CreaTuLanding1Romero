@@ -12,11 +12,11 @@ const Item = ({ producto }) => {
 
   return (
     <div className="item">
-      <img src={producto.imagen} alt={producto.nombre} className="item-imagen" />
+      <img src={producto.pictureUrl} alt={producto.title} className="item-imagen" />
       <div className="item-info">
-        <h3 className="item-nombre">{producto.nombre}</h3>
-        <p className="item-precio">{formatearPrecio(producto.precio)}</p>
-        <p className="item-stock">Stock: {producto.stock}</p>
+        <h3 className="item-nombre">{producto.title}</h3>
+        <p className="item-precio">{formatearPrecio(producto.price)}</p>
+        <p className="item-stock">Stock disponible: {producto.stock} unidades</p>
         <Link to={`/item/${producto.id}`} className="item-detalle-link">
           Ver Detalle
         </Link>

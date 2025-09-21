@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import { collection, getDocs, query, where } from 'firebase/firestore';
+import { db } from '../firebase/config';
 import ItemList from './ItemList';
-import { getProductos, getProductosPorCategoria } from '../data/mockData';
+import Loading from './Loading';
 import './ItemListContainer.css';
 
 const ItemListContainer = ({ mensaje }) => {
@@ -14,12 +16,22 @@ const ItemListContainer = ({ mensaje }) => {
     
     const fetchProductos = async () => {
       try {
-        let productosData;
+        const productosRef = collection(db, 'productos');
+        let q;
+        
         if (categoria) {
-          productosData = await getProductosPorCategoria(categoria);
+          q = query(productosRef, where('category', '==', categoria));
         } else {
-          productosData = await getProductos();
+          q = productosRef;
         }
+        
+        const querySnapshot = await getDocs(q);
+        const productosData = querySnapshot.docs.map(doc => ({
+          id: doc.id,
+          ...doc.data()
+        }));
+        console.log('Categoría buscada:', categoria);
+        console.log('Productos encontrados:', productosData);
         setProductos(productosData);
       } catch (error) {
         console.error('Error al cargar productos:', error);
@@ -43,7 +55,7 @@ const ItemListContainer = ({ mensaje }) => {
     <div className="ItemListContainer">
       <h2>{obtenerTitulo()}</h2>
       {loading ? (
-        <div className="loading">Cargando productos...</div>
+        <Loading message="Cargando productos..." />
       ) : productos.length > 0 ? (
         <ItemList productos={productos} />
       ) : (

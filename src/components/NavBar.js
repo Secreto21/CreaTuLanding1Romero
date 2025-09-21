@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import CartWidget from './CartWidget';
 import logo from '../logo.svg';
-import { categorias } from '../data/mockData';
 import './NavBar.css';
 
 const NavBar = () => {
@@ -21,15 +20,10 @@ const NavBar = () => {
         <div className="dropdown">
           <span className="nav-link dropdown-toggle">Categorías</span>
           <div className="dropdown-content">
-            {categorias.map((cat) => (
-              <Link 
-                key={cat.id} 
-                to={`/categoria/${cat.id}`} 
-                className="dropdown-link"
-              >
-                {cat.nombre}
-              </Link>
-            ))}
+            <Link to="/categoria/laptops" className="dropdown-link">Laptops</Link>
+            <Link to="/categoria/smartphones" className="dropdown-link">Smartphones</Link>
+            <Link to="/categoria/tablets" className="dropdown-link">Tablets</Link>
+            <Link to="/categoria/accesorios" className="dropdown-link">Accesorios</Link>
           </div>
         </div>
         

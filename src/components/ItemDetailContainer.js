@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import { doc, getDoc } from 'firebase/firestore';
+import { db } from '../firebase/config';
 import ItemDetail from './ItemDetail';
-import { getProductoPorId } from '../data/mockData';
+import Loading from './Loading';
 import './ItemDetailContainer.css';
 
 const ItemDetailContainer = () => {
@@ -14,8 +16,14 @@ const ItemDetailContainer = () => {
     
     const fetchProducto = async () => {
       try {
-        const productoData = await getProductoPorId(id);
-        setProducto(productoData);
+        const docRef = doc(db, 'productos', id);
+        const docSnap = await getDoc(docRef);
+        
+        if (docSnap.exists()) {
+          setProducto({ id: docSnap.id, ...docSnap.data() });
+        } else {
+          setProducto(null);
+        }
       } catch (error) {
         console.error('Error al cargar producto:', error);
       } finally {
@@ -29,7 +37,7 @@ const ItemDetailContainer = () => {
   return (
     <div className="ItemDetailContainer">
       {loading ? (
-        <div className="loading">Cargando producto...</div>
+        <Loading message="Cargando producto..." />
       ) : producto ? (
         <ItemDetail producto={producto} />
       ) : (

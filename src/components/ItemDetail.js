@@ -1,8 +1,13 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useCart } from '../context/CartContext';
 import './ItemDetail.css';
 
 const ItemDetail = ({ producto }) => {
   const [cantidad, setCantidad] = useState(1);
+  const [agregado, setAgregado] = useState(false);
+  const { addItem } = useCart();
+  const navigate = useNavigate();
 
   const formatearPrecio = (precio) => {
     return new Intl.NumberFormat('es-AR', {
@@ -18,8 +23,12 @@ const ItemDetail = ({ producto }) => {
   };
 
   const onAdd = () => {
-    console.log(`Agregando ${cantidad} unidad(es) del producto: ${producto.nombre}`);
-    alert(`Se agregaron ${cantidad} unidad(es) de ${producto.nombre} al carrito`);
+    addItem(producto, cantidad);
+    setAgregado(true);
+  };
+
+  const terminarCompra = () => {
+    navigate('/cart');
   };
 
   if (!producto) {
@@ -29,13 +38,13 @@ const ItemDetail = ({ producto }) => {
   return (
     <div className="item-detail">
       <div className="item-detail-imagen">
-        <img src={producto.imagen} alt={producto.nombre} />
+        <img src={producto.pictureUrl} alt={producto.title} />
       </div>
       <div className="item-detail-info">
-        <h2 className="item-detail-nombre">{producto.nombre}</h2>
-        <p className="item-detail-descripcion">{producto.descripcion}</p>
-        <p className="item-detail-precio">{formatearPrecio(producto.precio)}</p>
-        <p className="item-detail-stock">Stock disponible: {producto.stock}</p>
+        <h2 className="item-detail-nombre">{producto.title}</h2>
+        <p className="item-detail-descripcion">{producto.description}</p>
+        <p className="item-detail-precio">{formatearPrecio(producto.price)}</p>
+        <p className="item-detail-stock">Stock disponible: {producto.stock} unidades</p>
         
         <div className="item-count">
           <h4>Cantidad:</h4>
@@ -56,13 +65,24 @@ const ItemDetail = ({ producto }) => {
               +
             </button>
           </div>
-          <button 
-            onClick={onAdd}
-            className="btn-agregar-carrito"
-            disabled={producto.stock === 0}
-          >
-            {producto.stock === 0 ? 'Sin stock' : 'Agregar al carrito'}
-          </button>
+          {!agregado ? (
+            <button 
+              onClick={onAdd}
+              className="btn-agregar-carrito"
+              disabled={producto.stock === 0}
+            >
+              {producto.stock === 0 ? 'Sin stock' : 'Agregar al carrito'}
+            </button>
+          ) : (
+            <div className="botones-finalizacion">
+              <button onClick={terminarCompra} className="btn-terminar-compra">
+                Terminar compra
+              </button>
+              <button onClick={() => navigate('/')} className="btn-seguir-comprando">
+                Seguir comprando
+              </button>
+            </div>
+          )}
         </div>
       </div>
     </div>
