@@ -42,6 +42,45 @@ src/
 3. Configura las variables de entorno de Firebase en el archivo `.env`
 4. Inicia la aplicación con `npm start`
 
+## Configuración de Firebase y carga de productos
+
+Este proyecto utiliza Firestore para almacenar los productos y las órdenes de compra.
+**Importante:** Los datos de Firestore no se suben a GitHub, cada usuario debe crear su propia base de datos.
+
+### Pasos para configurar Firestore
+
+1. Crea un proyecto en [Firebase](https://console.firebase.google.com/).
+2. Habilita Firestore Database en modo de prueba.
+3. Crea una colección llamada `productos` y agrega documentos con la siguiente estructura:
+
+```json
+{
+  "title": "Laptop Pro X1",
+  "description": "Laptop de última generación con procesador i7, 16GB RAM, 512GB SSD",
+  "price": 1299.99,
+  "stock": 10,
+  "category": "laptops",
+  "pictureUrl": "https://images.unsplash.com/photo-1496181133206-80ce9b88a853"
+}
+```
+
+Puedes agregar más productos cambiando los valores de los campos.
+
+### Variables de entorno
+
+Crea un archivo `.env` en la raíz del proyecto con tus credenciales de Firebase:
+
+```
+REACT_APP_FIREBASE_API_KEY=tu-api-key
+REACT_APP_FIREBASE_AUTH_DOMAIN=tu-auth-domain
+REACT_APP_FIREBASE_PROJECT_ID=tu-project-id
+REACT_APP_FIREBASE_STORAGE_BUCKET=tu-storage-bucket
+REACT_APP_FIREBASE_MESSAGING_SENDER_ID=tu-messaging-sender-id
+REACT_APP_FIREBASE_APP_ID=tu-app-id
+```
+
+**No subas tus credenciales reales a GitHub.**
+
 ## Scripts Disponibles
 
 In the project directory, you can run:

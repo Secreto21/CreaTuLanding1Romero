@@ -1,0 +1,26 @@
+[
+  {
+    "title": "Laptop Pro X1",
+    "description": "Laptop de última generación con procesador i7, 16GB RAM, 512GB SSD",
+    "price": 1299.99,
+    "stock": 10,
+    "category": "laptops",
+    "pictureUrl": "https://images.unsplash.com/photo-1496181133206-80ce9b88a853"
+  },
+  {
+    "title": "Auriculares NoiseCancel 300",
+    "description": "Auriculares over-ear con cancelación activa de ruido y 30h de batería",
+    "price": 199.99,
+    "stock": 25,
+    "category": "audio",
+    "pictureUrl": "https://images.unsplash.com/photo-1518444020143-1b2f0f6b4b12"
+  },
+  {
+    "title": "Smartphone PixelZ",
+    "description": "Smartphone de 6.5\" con cámara triple y 128GB de almacenamiento",
+    "price": 749.99,
+    "stock": 15,
+    "category": "celulares",
+    "pictureUrl": "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9"
+  }
+]
